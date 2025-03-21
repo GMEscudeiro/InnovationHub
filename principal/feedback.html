@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Innovation Hub</title>
+  <link rel="stylesheet" href="feedback.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header-main">
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-lightbulb"></i>
+      Innovation Hub
+    </div>
+    <nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="main-menu">
+        <li><a href="../principal/principal.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="../como%20funciona/como-funciona.html"><i class="fas fa-question-circle"></i> Como Funciona</a></li>
+        <li><a href="historias.html"><i class="fas fa-star"></i> Histórias de Sucesso</a></li>
+        <li><a href="../contato/contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        <li class="login-btn"><a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Sua opinião é importante</h1>
+    <p class="page-subtitle">Ajude-nos a melhorar a Innovation Hub com seu feedback</p>
+  </div>
+</section>
+
+<section class="feedback-form-section">
+  <div class="container">
+    <div class="feedback-wrapper">
+      <div class="section-header">
+        <h2 class="section-title">Compartilhe sua experiência</h2>
+        <p class="section-subtitle">Seu feedback nos ajuda a aprimorar nossos serviços</p>
+      </div>
+
+      <form class="feedback-form">
+        <div class="form-group">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" placeholder="Seu nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seu.email@exemplo.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="user-type">Você é:</label>
+          <select id="user-type" required>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="empreendedor">Empreendedor/Anunciante</option>
+            <option value="investidor">Investidor</option>
+            <option value="visitante">Visitante</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Como você avalia a sua negociação na plataforma?</label>
+          <div class="rating-container">
+            <div class="rating">
+              <input type="radio" id="star5" name="rating" value="5" />
+              <label for="star5"><i class="fas fa-star"></i></label>
+              <input type="radio" id="star4" name="rating" value="4" />
+              <label for="star4"><i class="fas fa-star"></i></label>
+              <input type="radio" id="star3" name="rating" value="3" />
+              <label for="star3"><i class="fas fa-star"></i></label>
+              <input type="radio" id="star2" name="rating" value="2" />
+              <label for="star2"><i class="fas fa-star"></i></label>
+              <input type="radio" id="star1" name="rating" value="1" />
+              <label for="star1"><i class="fas fa-star"></i></label>
+            </div>
+            <span class="rating-text">Selecione uma avaliação</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-type">Tipo de feedback</label>
+          <select id="feedback-type" required>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="elogio">Elogio</option>
+            <option value="sugestao">Sugestão de melhoria</option>
+            <option value="problema">Problema encontrado</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-message">Sua mensagem</label>
+          <textarea id="feedback-message" rows="5" placeholder="Compartilhe sua experiência ou sugestões aqui..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="improvements">O que o seu negociante pode melhorar?</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="imp-usability" name="improvements[]" value="usabilidade">
+              <label for="imp-usability">Usabilidade</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="imp-design" name="improvements[]" value="design">
+              <label for="imp-design">Design</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="imp-features" name="improvements[]" value="funcionalidades">
+              <label for="imp-features">Funcionalidades</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="imp-support" name="improvements[]" value="suporte">
+              <label for="imp-support">Suporte</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input type="checkbox" id="contact-permission">
+            <label for="contact-permission">Aceito ser contatado para fornecer mais detalhes sobre meu feedback</label>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">Enviar feedback</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-mini">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">O que dizem nossos usuários</h2>
+      <p class="section-subtitle">Veja alguns feedbacks recentes</p>
+    </div>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p class="quote">"A plataforma é extremamente intuitiva e consegui encontrar investidores para meu projeto em questão de semanas!"</p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="author-info">
+          <p class="author-name">Marcos Silva</p>
+          <p class="author-title">Empreendedor</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p class="quote">"O sistema de matchmaking é preciso e me conectou com projetos que realmente se alinham com meu perfil de investimentos."</p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="author-info">
+          <p class="author-name">Ana Paula Mendes</p>
+          <p class="author-title">Investidora</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p class="quote">"O suporte é excepcional. Sempre que tive dúvidas, a equipe respondeu rapidamente e com soluções eficazes."</p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="author-info">
+          <p class="author-name">Roberto Almeida</p>
+          <p class="author-title">Empreendedor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3 class="footer-title">Innovation Hub</h3>
+        <p>Conectando empreendedores e investidores para construir o futuro juntos.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Links Rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="../principal/principal.html">Home</a></li>
+          <li><a href="../como%20funciona/como-funciona.html">Como Funciona</a></li>
+          <li><a href="historias.html">Histórias de Sucesso</a></li>
+          <li><a href="../blog/blog.html">Blog</a></li>
+          <li><a href="../contato/contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Recursos</h3>
+        <ul class="footer-links">
+          <li><a href="../guias/guia-empreendedor.html">Guia do Empreendedor</a></li>
+          <li><a href="../guias/guia-investidor.html">Guia do Investidor</a></li>
+          <li><a href="../documentos/documentos.html">Documentos e Modelos</a></li>
+          <li><a href="../faq/faq.html">FAQ</a></li>
+          <li><a href="../politicas/politica-privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Contato</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo</li>
+          <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+          <li><i class="fas fa-envelope"></i> contato@innovationhub.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Innovation Hub. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Toggle menu on mobile
+    $('.menu-toggle').click(function() {
+      $('.main-menu').toggleClass('active');
+    });
+
+    // Rating system interaction
+    $('.rating input').change(function() {
+      var rating = $(this).val();
+      var ratingText = '';
+
+      switch(rating) {
+        case '1':
+          ratingText = 'Ruim';
+          break;
+        case '2':
+          ratingText = 'Regular';
+          break;
+        case '3':
+          ratingText = 'Bom';
+          break;
+        case '4':
+          ratingText = 'Muito bom';
+          break;
+        case '5':
+          ratingText = 'Excelente';
+          break;
+      }
+
+      $('.rating-text').text(ratingText);
+    });
+
+    // Form submission
+    $('.feedback-form').submit(function(e) {
+      e.preventDefault();
+      alert('Obrigado pelo seu feedback! Sua opinião é muito importante para nós.');
+      $(this)[0].reset();
+      $('.rating-text').text('Selecione uma avaliação');
+    });
+  });
+</script>
+</body>
+</html>

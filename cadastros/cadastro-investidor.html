@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Investidor - Innovation Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style-anunciante.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header-main">
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-lightbulb"></i>
+                Innovation Hub
+            </div>
+        </div>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="../principal/principal.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="../como%20funciona/como-funciona.html"><i class="fas fa-info-circle"></i> Como Funciona</a></li>
+                <li><a href="../principal/historias.html"><i class="fas fa-star"></i> Histórias de Sucesso</a></li>
+                <li><a href="../contato/contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li><a href="cadastro.html" class="active"><i class="fas fa-user-plus"></i> Cadastro</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- Formulário de Cadastro -->
+<section class="hero" style="background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="form-container">
+            <div class="section-header">
+                <h2 class="section-title">Cadastro de Investidor</h2>
+                <p class="section-subtitle">Preencha os dados abaixo para encontrar projetos inovadores alinhados com seu perfil de investimento.</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="form-progress"></div>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step active" id="step1-indicator">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Dados Pessoais</h3>
+                    </div>
+                </div>
+                <div class="process-step" id="step2-indicator">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Perfil de Investimento</h3>
+                    </div>
+                </div>
+            </div>
+
+            <form id="investidor-form">
+                <div class="step-content active" id="step1">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                        <div class="form-error" id="nome-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        <div class="form-error" id="email-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                        <div class="form-error" id="telefone-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <div class="password-container">
+                            <input type="password" id="senha" name="senha" required placeholder="Crie uma senha forte">
+                            <span class="toggle-password" id="toggle-senha">
+                <i class="fas fa-eye"></i>
+              </span>
+                        </div>
+                        <div class="form-error" id="senha-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar-senha">Confirmar Senha</label>
+                        <div class="password-container">
+                            <input type="password" id="confirmar-senha" name="confirmar-senha" required placeholder="Confirme sua senha">
+                            <span class="toggle-password" id="toggle-confirmar-senha">
+                <i class="fas fa-eye"></i>
+              </span>
+                        </div>
+                        <div class="form-error" id="confirmar-senha-error"></div>
+                    </div>
+                    <div class="form-group btn-group">
+                        <button type="button" class="btn btn-primary" id="nextStep">Próximo <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="step-content" id="step2">
+                    <div class="form-group">
+                        <label for="tipo-investidor">Tipo de Investidor</label>
+                        <select id="tipo-investidor" name="tipo-investidor" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="pessoa-fisica">Pessoa Física</option>
+                            <option value="pessoa-juridica">Pessoa Jurídica</option>
+                            <option value="fundo-investimento">Fundo de Investimento</option>
+                            <option value="grupo-investidores">Grupo de Investidores</option>
+                            <option value="aceleradora">Aceleradora/Incubadora</option>
+                        </select>
+                        <div class="form-error" id="tipo-investidor-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="montante">Montante Disponível para Investimento (R$)</label>
+                        <select id="montante" name="montante" required>
+                            <option value="">Selecione uma faixa</option>
+                            <option value="ate-50k">Até R$ 50.000</option>
+                            <option value="50k-100k">R$ 50.000 a R$ 100.000</option>
+                            <option value="100k-500k">R$ 100.000 a R$ 500.000</option>
+                            <option value="500k-1m">R$ 500.000 a R$ 1.000.000</option>
+                            <option value="acima-1m">Acima de R$ 1.000.000</option>
+                        </select>
+                        <div class="form-error" id="montante-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Setores de Interesse</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor1" name="setores" value="tecnologia">
+                                <label for="setor1">Tecnologia e Software</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor2" name="setores" value="saude">
+                                <label for="setor2">Saúde e Biotecnologia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor3" name="setores" value="financas">
+                                <label for="setor3">Finanças e Fintech</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor4" name="setores" value="educacao">
+                                <label for="setor4">Educação</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor5" name="setores" value="sustentabilidade">
+                                <label for="setor5">Sustentabilidade e Energia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor6" name="setores" value="agronegocio">
+                                <label for="setor6">Agronegócio</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor7" name="setores" value="imobiliario">
+                                <label for="setor7">Imobiliário e Construção</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="setor8" name="setores" value="varejo">
+                                <label for="setor8">Varejo e E-commerce</label>
+                            </div>
+                        </div>
+                        <div class="form-error" id="setores-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Estágio de Preferência</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="estagio1" name="estagios" value="pre-seed">
+                                <label for="estagio1">Pré-seed (Ideia/Conceito)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="estagio2" name="estagios" value="seed">
+                                <label for="estagio2">Seed (Protótipo/MVP)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="estagio3" name="estagios" value="early">
+                                <label for="estagio3">Early Stage (Tração inicial)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="estagio4" name="estagios" value="growth">
+                                <label for="estagio4">Growth (Crescimento/Expansão)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="estagio5" name="estagios" value="mature">
+                                <label for="estagio5">Mature (Empresas Consolidadas)</label>
+                            </div>
+                        </div>
+                        <div class="form-error" id="estagios-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="experiencia">Experiência como Investidor</label>
+                        <select id="experiencia" name="experiencia" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="iniciante">Iniciante (Primeiro investimento)</option>
+                            <option value="moderado">Moderado (1-3 anos)</option>
+                            <option value="experiente">Experiente (3-10 anos)</option>
+                            <option value="avanccado">Avançado (mais de 10 anos)</option>
+                        </select>
+                        <div class="form-error" id="experiencia-error"></div>
+                    </div>
+                    <div class="form-group btn-group">
+                        <button type="button" class="btn btn-outline" id="prevStep"><i class="fas fa-arrow-left"></i> Voltar</button>
+                        <a href="dashboard.html" class="btn btn-primary">Concluir Cadastro <i class="fas fa-check"></i></a>          </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="success-message">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Cadastro realizado com sucesso!</h3>
+                <p>Redirecionando para o painel do investidor...</p>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title">Innovation Hub</h3>
+                <p>Conectando ideias inovadoras a investidores que acreditam no potencial de transformação.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="../principal/principal.html">Home</a></li>
+                    <li><a href="../como%20funciona/como-funciona.html">Como Funciona</a></li>
+                    <li><a href="historias-sucesso.html">Histórias de Sucesso</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contato</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Paulista, 1000 - São Paulo, SP</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@innovationhub.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 99999-9999</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Innovation Hub. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../principal/script.js" type="text/javascript"></script>
+</body>
+</html>

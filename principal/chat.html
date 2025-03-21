@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Innovation Hub</title>
+  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header-main">
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-lightbulb"></i>
+      Innovation Hub
+    </div>
+    <nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="main-menu">
+        <li><a href="principal.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="../como funciona/como-funciona.html"><i class="fas fa-question-circle"></i> Como Funciona</a></li>
+        <li><a href="historias.html"><i class="fas fa-star"></i> Histórias de Sucesso</a></li>
+        <li><a href="../contato/contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        <li class="login-btn"><a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Central de Mensagens</h1>
+    <p class="page-subtitle">Conecte-se diretamente com investidores e empreendedores</p>
+  </div>
+</section>
+
+<section class="chat-section">
+  <div class="container">
+    <div class="chat-container">
+      <div class="chat-sidebar">
+        <div class="user-profile">
+          <div class="profile-image">
+            <img src="../img/72d84236420e7e861488bbeab5411e0e.jpg" alt="Perfil">
+            <span class="status-badge online"></span>
+          </div>
+          <div class="profile-info">
+            <h3>João Silva</h3>
+            <p>Empreendedor</p>
+          </div>
+        </div>
+
+        <div class="chat-search">
+          <div class="search-input">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Pesquisar conversas...">
+          </div>
+        </div>
+
+        <div class="chat-filter">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="investors">Investidores</button>
+          <button class="filter-btn" data-filter="founders">Empreendedores</button>
+        </div>
+
+        <div class="conversation-list">
+          <div class="conversation-item active" data-id="1" data-type="investor">
+            <div class="conv-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+              <span class="status-badge online"></span>
+            </div>
+            <div class="conv-info">
+              <div class="conv-name">Maria Investimentos</div>
+              <div class="conv-last-msg">Podemos agendar uma call para discutir...</div>
+            </div>
+            <div class="conv-meta">
+              <div class="conv-time">14:30</div>
+              <div class="conv-badge">2</div>
+            </div>
+          </div>
+
+          <div class="conversation-item" data-id="2" data-type="investor">
+            <div class="conv-avatar">
+              <img src="../img/5cd813a2f1bb66b28fc6ce69b3f91e42.jpg" alt="Tech Ventures">
+              <span class="status-badge offline"></span>
+            </div>
+            <div class="conv-info">
+              <div class="conv-name">Tech Ventures</div>
+              <div class="conv-last-msg">Analisamos sua proposta e temos interesse...</div>
+            </div>
+            <div class="conv-meta">
+              <div class="conv-time">Ontem</div>
+            </div>
+          </div>
+
+          <div class="conversation-item" data-id="3" data-type="founder">
+            <div class="conv-avatar">
+              <img src="../img/fda260ec0d47d872fdeb073876207ee5.jpg" alt="Ana Startup">
+              <span class="status-badge online"></span>
+            </div>
+            <div class="conv-info">
+              <div class="conv-name">Ana Startup</div>
+              <div class="conv-last-msg">Obrigado pelo feedback sobre o pitch...</div>
+            </div>
+            <div class="conv-meta">
+              <div class="conv-time">Seg</div>
+            </div>
+          </div>
+
+          <div class="conversation-item" data-id="4" data-type="investor">
+            <div class="conv-avatar">
+              <img src="../img/0c4b20b8274781e881b1acc758f64c4c.jpg" alt="Investimentos BR">
+              <span class="status-badge away"></span>
+            </div>
+            <div class="conv-info">
+              <div class="conv-name">Investimentos BR</div>
+              <div class="conv-last-msg">Vamos agendar uma apresentação...</div>
+            </div>
+            <div class="conv-meta">
+              <div class="conv-time">15/03</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-main">
+        <div class="chat-header">
+          <div class="chat-contact">
+            <div class="contact-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+              <span class="status-badge online"></span>
+            </div>
+            <div class="contact-info">
+              <h3>Maria Investimentos</h3>
+              <p>Online agora</p>
+            </div>
+          </div>
+          <div class="chat-actions">
+            <button class="action-btn" title="Videochamada">
+              <i class="fas fa-video"></i>
+            </button>
+            <button class="action-btn" title="Ligação">
+              <i class="fas fa-phone"></i>
+            </button>
+            <button class="action-btn" title="Mais opções">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-messages">
+          <div class="message-date">
+            <span>Hoje</span>
+          </div>
+
+          <div class="message-item received">
+            <div class="message-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+            </div>
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Olá João, tudo bem? Recebi seu pitch deck e estou interessada em saber mais sobre seu projeto.</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">10:15</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item sent">
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Olá Maria! Tudo ótimo, e você? Fico feliz em saber do seu interesse. O projeto está em fase de validação de mercado e já temos alguns clientes iniciais.</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">10:18</span>
+                <span class="message-status"><i class="fas fa-check-double"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item received">
+            <div class="message-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+            </div>
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Excelente! Poderia me compartilhar mais informações sobre a tração atual? Estou especialmente interessada nos números de crescimento mensal.</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">10:25</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item sent">
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Claro! Nos últimos 3 meses tivemos um crescimento de 20% no número de usuários ativos mensais. Atualmente estamos com 1.500 usuários e nossa taxa de retenção está em 68%.</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">10:30</span>
+                <span class="message-status"><i class="fas fa-check-double"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item sent">
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Também temos uma taxa de conversão de 3.5% do plano freemium para o premium, o que está acima da média do setor.</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">10:31</span>
+                <span class="message-status"><i class="fas fa-check-double"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item received">
+            <div class="message-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+            </div>
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Impressionante! Isso está bastante alinhado com o que procuramos em startups early stage. Podemos agendar uma call para discutir melhor?</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">14:05</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-item received">
+            <div class="message-avatar">
+              <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+            </div>
+            <div class="message-content">
+              <div class="message-bubble">
+                <p>Tenho disponibilidade amanhã às 14h ou quinta-feira às 10h. Algum desses horários funciona para você?</p>
+              </div>
+              <div class="message-meta">
+                <span class="message-time">14:07</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-footer">
+          <div class="chat-attachments">
+            <button class="attachment-btn" title="Anexar arquivo">
+              <i class="fas fa-paperclip"></i>
+            </button>
+          </div>
+          <div class="chat-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+          </div>
+          <div class="chat-send">
+            <button class="send-btn" title="Enviar mensagem">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-details">
+        <div class="details-header">
+          <h3>Detalhes do Contato</h3>
+          <button class="close-details">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="profile-details">
+          <div class="profile-image">
+            <img src="../img/82552a6cd4938e5f5bf8c1cd11691634.jpg" alt="Maria Investimentos">
+          </div>
+          <h3>Maria Investimentos</h3>
+          <p class="profile-status">Online</p>
+          <p class="profile-bio">Investidora anjo com foco em startups de tecnologia nas áreas de saúde, educação e finanças.</p>
+        </div>
+
+        <div class="contact-actions">
+          <button class="contact-action-btn">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Agendar</span>
+          </button>
+          <button class="contact-action-btn">
+            <i class="fas fa-star"></i>
+            <span>Favoritar</span>
+          </button>
+          <button class="contact-action-btn">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Reportar</span>
+          </button>
+        </div>
+
+        <div class="contact-info-list">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="info-content">
+              <h4>Empresa</h4>
+              <p>Angels Investments</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+            <div class="info-content">
+              <h4>Ticket Médio</h4>
+              <p>R$ 100K - R$ 300K</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div class="info-content">
+              <h4>Setores</h4>
+              <p>Saúde, Educação, Finanças</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="info-content">
+              <h4>Estágio</h4>
+              <p>Seed, Series A</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="shared-files">
+          <h3>Arquivos Compartilhados</h3>
+
+          <div class="file-item">
+            <div class="file-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="file-info">
+              <p class="file-name">Pitch_Deck_v2.pdf</p>
+              <p class="file-meta">PDF, 2.3 MB</p>
+            </div>
+            <button class="file-download">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+
+          <div class="file-item">
+            <div class="file-icon">
+              <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="file-info">
+              <p class="file-name">Financials_2023.xlsx</p>
+              <p class="file-meta">Excel, 756 KB</p>
+            </div>
+            <button class="file-download">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3 class="footer-title">Innovation Hub</h3>
+        <p>Conectando empreendedores e investidores para construir o futuro juntos.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Links Rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="principal.html">Home</a></li>
+          <li><a href="como-funciona.html">Como Funciona</a></li>
+          <li><a href="historias-sucesso.html">Histórias de Sucesso</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Recursos</h3>
+        <ul class="footer-links">
+          <li><a href="guia-empreendedor.html">Guia do Empreendedor</a></li>
+          <li><a href="guia-investidor.html">Guia do Investidor</a></li>
+          <li><a href="documentos.html">Documentos e Modelos</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Contato</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo</li>
+          <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+          <li><i class="fas fa-envelope"></i> contato@innovationhub.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Innovation Hub. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="chat.js"></script>
+</body>
+</html>
