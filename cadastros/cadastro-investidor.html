@@ -7,6 +7,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style-anunciante.css">
+    <style>
+        /* Estilos para área de upload de arquivo */
+        .file-upload-container {
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .file-upload-container:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .file-upload-container i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .file-upload-container h4 {
+            margin: 0 0 5px;
+            color: var(--text-color);
+        }
+        
+        .file-upload-container p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            align-items: center;
+        }
+        
+        .file-info i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .file-info-details {
+            flex-grow: 1;
+            text-align: left;
+        }
+        
+        .file-info-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .file-info-size {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .file-info-remove {
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <!-- Header -->
@@ -62,7 +136,7 @@
                 </div>
             </div>
 
-            <form id="investidor-form">
+            <form id="investidor-form" enctype="multipart/form-data">
                 <div class="step-content active" id="step1">
                     <div class="form-group">
                         <label for="nome">Nome Completo</label>
@@ -117,6 +191,32 @@
                         </select>
                         <div class="form-error" id="tipo-investidor-error"></div>
                     </div>
+
+                    <!-- Área de upload de documentos comprobatórios -->
+                    <div class="form-group" id="documento-container">
+                        <label>Documento Comprobatório</label>
+                        <p class="input-description">Envie um documento que comprove a existência da sua empresa (ex: CNPJ, Contrato Social, etc.)</p>
+                        
+                        <div class="file-upload-container" id="file-drop-area">
+                            <i class="fas fa-file-upload"></i>
+                            <h4>Arraste e solte seu arquivo aqui</h4>
+                            <p>ou</p>
+                            <button type="button" class="btn btn-outline btn-sm">Selecionar Arquivo</button>
+                            <input type="file" class="file-input" id="documento-comprobatorio" name="documento-comprobatorio" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                        </div>
+                        
+                        <div class="file-info" id="file-info">
+                            <i class="fas fa-file-pdf"></i>
+                            <div class="file-info-details">
+                                <div class="file-info-name" id="file-name"></div>
+                                <div class="file-info-size" id="file-size"></div>
+                            </div>
+                            <i class="fas fa-times file-info-remove" id="remove-file"></i>
+                        </div>
+                        
+                        <div class="form-error" id="documento-error"></div>
+                    </div>
+
                     <div class="form-group">
                         <label for="montante">Montante Disponível para Investimento (R$)</label>
                         <select id="montante" name="montante" required>
@@ -206,7 +306,7 @@
                     </div>
                     <div class="form-group btn-group">
                         <button type="button" class="btn btn-outline" id="prevStep"><i class="fas fa-arrow-left"></i> Voltar</button>
-                        <a href="dashboard.html" class="btn btn-primary">Concluir Cadastro <i class="fas fa-check"></i></a>          </div>
+                        <a href="dashboard.html" class="btn btn-primary">Concluir Cadastro <i class="fas fa-check"></i></a>
                     </div>
                 </div>
             </form>
@@ -273,5 +373,146 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="../principal/script.js" type="text/javascript"></script>
+<script>
+    // Script para controlar o upload de arquivo
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('documento-comprobatorio');
+        const fileDropArea = document.getElementById('file-drop-area');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        const fileSize = document.getElementById('file-size');
+        const removeFile = document.getElementById('remove-file');
+        const fileButton = fileDropArea.querySelector('button');
+        
+        // Abrir o seletor de arquivo quando clicar no botão ou na área
+        fileButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            fileInput.click();
+        });
+        
+        fileDropArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        // Prevenir comportamento padrão de arrastar e soltar
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        // Destacar a área quando arrastar um arquivo
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            fileDropArea.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+            fileDropArea.style.borderColor = 'var(--primary-light)';
+        }
+        
+        function unhighlight() {
+            fileDropArea.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            fileDropArea.style.borderColor = 'var(--primary-color)';
+        }
+        
+        // Processar o arquivo quando for solto na área
+        fileDropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length) {
+                fileInput.files = files;
+                updateFileInfo(files[0]);
+            }
+        }
+        
+        // Processar arquivo quando selecionado pelo input
+        fileInput.addEventListener('change', function() {
+            if (this.files.length) {
+                updateFileInfo(this.files[0]);
+            }
+        });
+        
+        // Atualizar informações do arquivo
+        function updateFileInfo(file) {
+            // Mostrar informações do arquivo
+            fileName.textContent = file.name;
+            
+            // Formatar tamanho do arquivo
+            const fileSizeKB = file.size / 1024;
+            let fileSizeFormatted;
+            
+            if (fileSizeKB < 1024) {
+                fileSizeFormatted = fileSizeKB.toFixed(1) + ' KB';
+            } else {
+                fileSizeFormatted = (fileSizeKB / 1024).toFixed(2) + ' MB';
+            }
+            
+            fileSize.textContent = fileSizeFormatted;
+            
+            // Atualizar ícone baseado no tipo de arquivo
+            const fileIcon = fileInfo.querySelector('i:first-child');
+            fileIcon.className = getFileIcon(file.name);
+            
+            // Mostrar as informações do arquivo
+            fileInfo.style.display = 'flex';
+            
+            // Esconder área de arrastar e soltar
+            fileDropArea.style.display = 'none';
+        }
+        
+        // Obter ícone baseado no tipo de arquivo
+        function getFileIcon(filename) {
+            const extension = filename.split('.').pop().toLowerCase();
+            
+            switch (extension) {
+                case 'pdf':
+                    return 'fas fa-file-pdf';
+                case 'doc':
+                case 'docx':
+                    return 'fas fa-file-word';
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                    return 'fas fa-file-image';
+                default:
+                    return 'fas fa-file';
+            }
+        }
+        
+        // Remover arquivo
+        removeFile.addEventListener('click', function() {
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+            fileDropArea.style.display = 'block';
+        });
+        
+        // Mostrar área de documentos apenas quando pessoa jurídica for selecionada
+        const tipoInvestidor = document.getElementById('tipo-investidor');
+        const documentoContainer = document.getElementById('documento-container');
+        
+        tipoInvestidor.addEventListener('change', function() {
+            if (this.value === 'pessoa-juridica' || this.value === 'fundo-investimento' || this.value === 'grupo-investidores' || this.value === 'aceleradora') {
+                documentoContainer.style.display = 'block';
+                documentoContainer.classList.add('animated', 'fadeIn');
+            } else {
+                documentoContainer.style.display = 'none';
+            }
+        });
+        
+        // Inicialmente esconder área de documentos
+        documentoContainer.style.display = 'none';
+    });
+</script>
 </body>
 </html>
