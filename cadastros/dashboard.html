@@ -810,8 +810,8 @@
               </div>
             </div>
             <div class="card-footer">
-              <a href="detalhes-projeto.html" class="card-cta">
-                Ver Detalhes <i class="fas fa-arrow-right"></i>
+              <a href="pagamento.html" class="card-cta">
+                Investir Agora <i class="fas fa-arrow-right"></i>
               </a>
               <div class="card-actions">
                 <div class="card-action favorite-btn">
@@ -1213,7 +1213,14 @@
         }
       });
     }
-    
+    document.querySelectorAll('.card-cta').forEach(cta => {
+      cta.addEventListener('click', function(event) {
+        event.preventDefault();
+        const projectName = this.closest('.card').querySelector('.card-title').textContent;
+        const paymentUrl = `pagamento.html?projeto=${encodeURIComponent(projectName)}`;
+        window.location.href = paymentUrl;
+      });
+    });
     // Mobile menu toggle
     document.querySelector('.menu-toggle').addEventListener('click', function() {
       document.querySelector('.main-menu').classList.toggle('active');
