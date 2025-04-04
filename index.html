@@ -10,6 +10,1775 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<style>
+    /* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6c5ce7;
+    --primary-dark: #5649c0;
+    --secondary-color: #00cec9;
+    --secondary-dark: #00b3b0;
+    --accent-color: #ff7675;
+    --accent-dark: #e05d5c;
+    --dark-color: #2d3436;
+    --light-color: #f9f9f9;
+    --gray-color: #b2bec3;
+    --success-color: #00b894;
+    --warning-color: #fdcb6e;
+    --danger-color: #d63031;
+    --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    --gradient-secondary: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Utilitários */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 18px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+}
+
+.btn-secondary {
+    background: var(--gradient-secondary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 118, 117, 0.4);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 118, 117, 0.6);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background: var(--gradient-primary);
+    bottom: -10px;
+    left: 20%;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #636e72;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.light {
+    color: white;
+}
+
+.light .section-title::after {
+    background: white;
+}
+
+.light .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.highlight {
+    color: var(--accent-color);
+    position: relative;
+    z-index: 1;
+}
+
+.highlight::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(255, 118, 117, 0.2);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.rounded-image {
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Header */
+.header-main {
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.header-main.scrolled {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.header-main .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-menu li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.main-menu li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    bottom: -5px;
+    left: 0;
+    transition: var(--transition);
+}
+
+.main-menu li a:hover,
+.main-menu li a.active {
+    color: var(--primary-color);
+}
+
+.main-menu li a:hover::after,
+.main-menu li a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6c5ce7, #00cec9);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    min-width: 120px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+}
+
+.hero-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-img:hover {
+    transform: perspective(1000px) rotateY(0);
+}
+
+.hero-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 20px;
+    bottom: -20px;
+    right: -20px;
+    z-index: 1;
+}
+
+/* Features */
+.features {
+    padding: 100px 0;
+    background-color: white;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.feature-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.feature-card:nth-child(2) .feature-icon {
+    background: var(--gradient-secondary);
+    box-shadow: 0 5px 15px rgba(255, 118, 117, 0.3);
+}
+
+.feature-card:nth-child(3) .feature-icon {
+    background: linear-gradient(45deg, var(--secondary-color), var(--success-color));
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+}
+
+.feature-card:nth-child(4) .feature-icon {
+    background: linear-gradient(45deg, var(--warning-color), var(--accent-color));
+    box-shadow: 0 5px 15px rgba(253, 203, 110, 0.3);
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #636e72;
+    margin-bottom: 20px;
+}
+
+.feature-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+}
+
+.feature-link i {
+    transition: var(--transition);
+}
+
+.feature-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Process */
+.process {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+    position: relative;
+    overflow: hidden;
+}
+
+.process::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 70px;
+    background: white;
+    top: -35px;
+    left: -25%;
+    transform: rotate(2deg);
+    border-radius: 50%;
+}
+
+.process::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 70px;
+    background: white;
+    bottom: -35px;
+    left: -25%;
+    transform: rotate(2deg);
+    border-radius: 50%;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.process-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background: var(--gradient-primary);
+    bottom: -10px;
+    left: 20%;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #636e72;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.light {
+    color: white;
+}
+
+.light .section-title::after {
+    background: white;
+}
+
+.light .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.highlight {
+    color: var(--accent-color);
+    position: relative;
+    z-index: 1;
+}
+
+.highlight::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(255, 118, 117, 0.2);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.rounded-image {
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Header */
+.header-main {
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.header-main.scrolled {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.header-main .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-menu li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.main-menu li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    bottom: -5px;
+    left: 0;
+    transition: var(--transition);
+}
+
+.main-menu li a:hover,
+.main-menu li a.active {
+    color: var(--primary-color);
+}
+
+.main-menu li a:hover::after,
+.main-menu li a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6c5ce7, #00cec9);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    min-width: 120px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+}
+
+.hero-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-img:hover {
+    transform: perspective(1000px) rotateY(0);
+}
+
+.hero-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 20px;
+    bottom: -20px;
+    right: -20px;
+    z-index: 1;
+}
+
+/* Features */
+.features {
+    padding: 100px 0;
+    background-color: white;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.feature-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.feature-card:nth-child(2) .feature-icon {
+    background: var(--gradient-secondary);
+    box-shadow: 0 5px 15px rgba(255, 118, 117, 0.3);
+}
+
+.feature-card:nth-child(3) .feature-icon {
+    background: linear-gradient(45deg, var(--secondary-color), var(--success-color));
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+}
+
+.feature-card:nth-child(4) .feature-icon {
+    background: linear-gradient(45deg, var(--warning-color), var(--accent-color));
+    box-shadow: 0 5px 15px rgba(253, 203, 110, 0.3);
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #636e72;
+    margin-bottom: 20px;
+}
+
+.feature-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+}
+
+.feature-link i {
+    transition: var(--transition);
+}
+
+.feature-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Process */
+.process {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+    position: relative;
+    overflow: hidden;
+}
+
+.process::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 70px;
+    background: white;
+    top: -35px;
+    left: -25%;
+    transform: rotate(2deg);
+    border-radius: 50%;
+}
+
+.process::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 70px;
+    background: white;
+    bottom: -35px;
+    left: -25%;
+    transform: rotate(2deg);
+    border-radius: 50%;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.process-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.step-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    color: white;
+}
+
+.step-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 100px 0;
+    background-color: var(--light-color);
+}
+
+.testimonial-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    display: none;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    margin: 20px auto 50px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: var(--transition);
+}
+
+.testimonial-card.active {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial-image {
+    flex-shrink: 0;
+}
+
+.testimonial-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+}
+
+.quote {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--dark-color);
+}
+
+.quote::before {
+    content: "";
+    font-size: 60px;
+    position: absolute;
+    color: var(--primary-color);
+    opacity: 0.2;
+    top: -30px;
+    left: -15px;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.author-title {
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: var(--warning-color);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.carousel-control {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--primary-color);
+}
+
+.carousel-control:hover {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: var(--gray-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background: var(--primary-color);
+    transform: scale(1.3);
+}
+/* Estilos para a seção de Histórias de Sucesso */
+.testimonials {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.testimonial-slider {
+    position: relative;
+    margin-top: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* 3 cards * 100% */
+}
+
+.testimonial-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 0 15px;
+    opacity: 0.3;
+    transform: scale(0.85);
+    transition: all 0.5s ease;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (min-width: 992px) {
+    .testimonial-card {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.testimonial-image {
+    flex: 0 0 120px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+    .testimonial-image {
+        margin-bottom: 0;
+        margin-right: 30px;
+    }
+}
+
+.testimonial-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #5469d4;
+}
+
+.testimonial-content {
+    flex: 1;
+}
+
+.quote {
+    font-size: 18px;
+    line-height: 1.8;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quote::before {
+    content: "";
+    font-size: 60px;
+    font-family: Georgia, serif;
+    color: #5469d4;
+    opacity: 0.3;
+    position: absolute;
+    top: -20px;
+    left: -15px;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.author-title {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0 10px;
+}
+
+.rating {
+    color: #ffb400;
+    font-size: 16px;
+}
+
+/* Controles do carrossel */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.carousel-control {
+    background-color: #5469d4;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: #4050a9;
+    transform: translateY(-2px);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #5469d4;
+    transform: scale(1.2);
+}
+
+/* Animação de entrada para elementos visíveis */
+.testimonial-slider.in-view .testimonial-card.active {
+    animation: fadeInScale 0.8s forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0.3;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* Partners */
+.partners {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.partner-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* CTA Section */
+.cta {
+    padding: 80px 0;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+}
+
+.cta::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -70px;
+    right: -70px;
+}
+
+.cta .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.cta-content {
+    color: white;
+    flex: 1;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cta-image img {
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    max-width: 100%;
+    border: 5px solid white;
+    transform: rotate(3deg);
+    transition: var(--transition);
+}
+
+.cta-image img:hover {
+    transform: rotate(0);
+}
+
+/* FAQ Section */
+.faq {
+    padding: 100px 0;
+    background-color: var(--light-color);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.faq-toggle {
+    background: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: #636e72;
+}
+
+.faq-question:hover .faq-toggle {
+    background: var(--secondary-color);
+    transform: rotate(90deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 20px;
+}
+
+.faq-item.active .faq-toggle i {
+    transform: rotate(45deg);
+}
+
+/* Newsletter */
+.newsletter {
+    padding: 80px 0;
+    background: var(--primary-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    top: -150px;
+    right: -150px;
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.newsletter-content p {
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.newsletter-form .form-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    font-size: 16px;
+    outline: none;
+}
+
+.newsletter-form button {
+    padding: 15px 30px;
+    border-radius: 0 50px 50px 0;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: var(--accent-dark);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.form-check label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-column p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    line-height: 1.7;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.contact-info li i {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    transition: all 0.8s ease;
+}
+
+.animate-on-scroll.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 36px;
+    }
+
+    .cta .container {
+        flex-direction: column;
+    }
+
+    .cta-content {
+        text-align: center;
+    }
+
+    .cta-image {
+        justify-content: center;
+    }
+
+    .testimonial-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        transition: var(--transition);
+        z-index: 1000;
+    }
+
+    .main-menu.active {
+        left: 0;
+    }
+
+    .process-step {
+        flex-direction: column;
+    }
+
+    .step-number {
+        margin: 0 auto 20px;
+    }
+
+    .step-content {
+        text-align: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .newsletter-form .form-group {
+        flex-direction: column;
+    }
+
+    .newsletter-form input[type="email"] {
+        border-radius: 50px;
+        margin-bottom: 10px;
+    }
+
+    .newsletter-form button {
+        border-radius: 50px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .stat {
+        width: 100%;
+    }
+}
+
+/* Efeitos especiais */
+.btn-primary,
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before,
+.btn-secondary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: var(--transition);
+}
+
+.btn-primary:hover::before,
+.btn-secondary:hover::before {
+    left: 100%;
+}
+
+.feature-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    top: -100%;
+    left: 0;
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon::after {
+    top: 0;
+}
+</style>
+
+
 <header class="header-main">
     <div class="container">
         <div class="logo">
@@ -400,7 +2169,1127 @@
     </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqury/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Menu Toggle
+    $('.menu-toggle').click(function() {
+        $('.main-menu').toggleClass('active');
+    });
+
+    // FAQ Toggle
+    $('.faq-question').click(function() {
+        $(this).next('.faq-answer').slideToggle();
+        $(this).find('.faq-toggle i').toggleClass('fa-plus fa-minus');
+    });
+
+    // Carousel
+    let currentSlide = 0;
+    const slides = $('.testimonial-card');
+    const dots = $('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        slides.removeClass('active');
+        dots.removeClass('active');
+        $(slides[index]).addClass('active');
+        $(dots[index]).addClass('active');
+        currentSlide = index;
+    }
+
+    $('.carousel-control.next').click(function() {
+        showSlide((currentSlide + 1) % totalSlides);
+    });
+
+    $('.carousel-control.prev').click(function() {
+        showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+    });
+
+    $('.dot').click(function() {
+        const index = $(this).index();
+        showSlide(index);
+    });
+
+    // Animate Stats
+    function animateStats() {
+        $('.stat-number').each(function() {
+            const $this = $(this);
+            const countTo = parseInt($this.attr('data-count'));
+
+            $({ countNum: 0 }).animate({
+                countNum: countTo
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function() {
+                    $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                    $this.text(this.countNum);
+                }
+            });
+        });
+    }
+
+    // Animate on scroll
+    function animateOnScroll() {
+        $('.animate-on-scroll').each(function() {
+            const elementPos = $(this).offset().top;
+            const topOfWindow = $(window).scrollTop();
+            const windowHeight = $(window).height();
+
+            if (elementPos < topOfWindow + windowHeight - 100) {
+                $(this).addClass('fade-in');
+            }
+        });
+    }
+
+    // Run animations
+    setTimeout(animateStats, 500);
+    $(window).on('scroll', animateOnScroll);
+    animateOnScroll(); // Run once on page load
+});
+
+
+
+// JavaScript básico para manipulação do formulário
+document.addEventListener('DOMContentLoaded', function() {
+    const nextBtn = document.getElementById('nextStep');
+    const prevBtn = document.getElementById('prevStep');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const form = document.getElementById('anunciante-form');
+    const successMessage = document.getElementById('success-message');
+
+    // Função para validar o primeiro passo
+    function validateStep1() {
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+        if (!nome || !email || !telefone || !senha || !confirmarSenha) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return false;
+        }
+
+        if (senha !== confirmarSenha) {
+            alert('As senhas não coincidem.');
+            return false;
+        }
+
+        return true;
+    }
+
+    // Avançar para o próximo passo
+    nextBtn.addEventListener('click', function() {
+        if (validateStep1()) {
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+        }
+    });
+
+    // Voltar para o passo anterior
+    prevBtn.addEventListener('click', function() {
+        step2.style.display = 'none';
+        step1.style.display = 'block';
+    });
+
+    // Enviar formulário
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Validação do segundo passo
+        const empresa = document.getElementById('empresa').value;
+        const segmento = document.getElementById('segmento').value;
+        const descricao = document.getElementById('descricao').value;
+        const investimento = document.getElementById('investimento').value;
+
+        if (!empresa || !segmento || !descricao || !investimento) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
+
+        // Simular envio do formulário
+        successMessage.style.display = 'block';
+
+        setTimeout(() => {
+            window.location.href = 'painel-anunciante.html';
+        }, 3000);
+    });
+
+    // Menu responsivo
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainMenu = document.querySelector('.main-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mainMenu.classList.toggle('active');
+    });
+});
+$(document).ready(function() {
+    // Toggle menu for mobile
+    $('.menu-toggle').click(function() {
+        $('.main-menu').toggleClass('active');
+    });
+
+    // Handle password visibility toggle
+    $('#toggle-senha').click(function() {
+        togglePasswordVisibility('#senha', '#toggle-senha');
+    });
+
+    $('#toggle-confirmar-senha').click(function() {
+        togglePasswordVisibility('#confirmar-senha', '#toggle-confirmar-senha');
+    });
+
+    function togglePasswordVisibility(inputId, toggleId) {
+        const input = $(inputId);
+        const toggle = $(toggleId).find('i');
+
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text');
+            toggle.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            input.attr('type', 'password');
+            toggle.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    }
+
+    // Form navigation
+    $('#nextStep').click(function() {
+        if (validateStep1()) {
+            $('#step1').removeClass('active');
+            $('#step2').addClass('active');
+            $('#step1-indicator').removeClass('active');
+            $('#step2-indicator').addClass('active');
+            $('#form-progress').css('width', '100%');
+            $('html, body').animate({
+                scrollTop: $(".form-container").offset().top - 100
+            }, 500);
+        }
+    });
+
+    $('#prevStep').click(function() {
+        $('#step2').removeClass('active');
+        $('#step1').addClass('active');
+        $('#step2-indicator').removeClass('active');
+        $('#step1-indicator').addClass('active');
+        $('#form-progress').css('width', '50%');
+        $('html, body').animate({
+            scrollTop: $(".form-container").offset().top - 100
+        }, 500);
+    });
+
+    // Form validation
+    function validateStep1() {
+        let isValid = true;
+
+        // Name validation
+        const nome = $('#nome').val().trim();
+        if (nome === '') {
+            showError('#nome-error', 'Por favor, informe seu nome completo.');
+            isValid = false;
+        } else {
+            hideError('#nome-error');
+        }
+
+        // Email validation
+        const email = $('#email').val().trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === '') {
+            showError('#email-error', 'Por favor, informe seu e-mail.');
+            isValid = false;
+        } else if (!emailRegex.test(email)) {
+            showError('#email-error', 'Por favor, informe um e-mail válido.');
+            isValid = false;
+        } else {
+            hideError('#email-error');
+        }
+
+        // Phone validation
+        const telefone = $('#telefone').val().trim();
+        const telefoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+        if (telefone === '') {
+            showError('#telefone-error', 'Por favor, informe seu telefone.');
+            isValid = false;
+        } else if (!telefoneRegex.test(telefone)) {
+            showError('#telefone-error', 'Formato: (00) 00000-0000');
+            isValid = false;
+        } else {
+            hideError('#telefone-error');
+        }
+
+        // Password validation
+        const senha = $('#senha').val();
+        if (senha === '') {
+            showError('#senha-error', 'Por favor, crie uma senha.');
+            isValid = false;
+        } else if (senha.length < 8) {
+            showError('#senha-error', 'A senha deve ter pelo menos 8 caracteres.');
+            isValid = false;
+        } else {
+            hideError('#senha-error');
+        }
+
+        // Confirm password validation
+        const confirmarSenha = $('#confirmar-senha').val();
+        if (confirmarSenha === '') {
+            showError('#confirmar-senha-error', 'Por favor, confirme sua senha.');
+            isValid = false;
+        } else if (confirmarSenha !== senha) {
+            showError('#confirmar-senha-error', 'As senhas não correspondem.');
+            isValid = false;
+        } else {
+            hideError('#confirmar-senha-error');
+        }
+
+        return isValid;
+    }
+
+    function validateStep2() {
+        let isValid = true;
+
+        // Company/Project name validation
+        const empresa = $('#empresa').val().trim();
+        if (empresa === '') {
+            showError('#empresa-error', 'Por favor, informe o nome da empresa/projeto.');
+            isValid = false;
+        } else {
+            hideError('#empresa-error');
+        }
+
+        // Segment validation
+        const segmento = $('#segmento').val();
+        if (segmento === '') {
+            showError('#segmento-error', 'Por favor, selecione um segmento.');
+            isValid = false;
+        } else {
+            hideError('#segmento-error');
+        }
+
+        // Description validation
+        const descricao = $('#descricao').val().trim();
+        if (descricao === '') {
+            showError('#descricao-error', 'Por favor, descreva seu projeto.');
+            isValid = false;
+        } else if (descricao.length < 50) {
+            showError('#descricao-error', 'A descrição deve ter pelo menos 50 caracteres.');
+            isValid = false;
+        } else {
+            hideError('#descricao-error');
+        }
+
+        // Areas of interest validation
+        const areasChecked = $('input[name="areas"]:checked').length;
+        if (areasChecked === 0) {
+            showError('#areas-error', 'Por favor, selecione pelo menos uma área de interesse.');
+            isValid = false;
+        } else {
+            hideError('#areas-error');
+        }
+
+        // Investment amount validation
+        const investimento = $('#investimento').val().trim();
+        if (investimento === '') {
+            showError('#investimento-error', 'Por favor, informe o valor de investimento desejado.');
+            isValid = false;
+        } else if (isNaN(investimento) || parseInt(investimento) <= 0) {
+            showError('#investimento-error', 'Por favor, informe um valor válido.');
+            isValid = false;
+        } else {
+            hideError('#investimento-error');
+        }
+
+        return isValid;
+    }
+
+    function showError(selector, message) {
+        $(selector).text(message).show();
+        $(selector).closest('.form-group').find('input, select, textarea').addClass('error');
+    }
+
+    function hideError(selector) {
+        $(selector).hide();
+        $(selector).closest('.form-group').find('input, select, textarea').removeClass('error');
+    }
+
+    // Phone mask
+    $('#telefone').on('input', function() {
+        let phone = $(this).val();
+        phone = phone.replace(/\D/g, '');
+
+        if (phone.length > 0) {
+            phone = '(' + phone;
+        }
+        if (phone.length > 3) {
+            phone = phone.substring(0, 3) + ') ' + phone.substring(3);
+        }
+        if (phone.length > 10) {
+            phone = phone.substring(0, 10) + '-' + phone.substring(10);
+        }
+        if (phone.length > 15) {
+            phone = phone.substring(0, 15);
+        }
+
+        $(this).val(phone);
+    });
+
+    // Form submission
+    $('#anunciante-form').submit(function(e) {
+        e.preventDefault();
+
+        if (validateStep2()) {
+            // Simulate form submission
+            const formData = $(this).serialize();
+            console.log('Form data:', formData);
+
+            // Show success message
+            $(this).hide();
+            $('#success-message').fadeIn();
+
+            // Simulate redirect after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'painel-anunciante.html';
+            }, 3000);
+        }
+    });
+});
+
+// Script para o carrossel de depoimentos com detecção de visibilidade
+$(document).ready(function() {
+    // Variáveis
+    const slider = $('.testimonial-slider');
+    const track = $('.testimonial-track');
+    const cards = $('.testimonial-card');
+    const nextButton = $('.carousel-control.next');
+    const prevButton = $('.carousel-control.prev');
+    const indicators = $('.indicator');
+    let currentIndex = 0;
+    const cardWidth = 100; // Em porcentagem
+
+    // Inicialização
+    showCard(currentIndex);
+
+    // Funções de navegação
+    function showCard(index) {
+        // Limitar índice entre 0 e o número máximo de cards - 1
+        if (index < 0) index = cards.length - 1;
+        if (index >= cards.length) index = 0;
+
+        currentIndex = index;
+
+        // Mover o track para exibir o card atual
+        track.css('transform', `translateX(-${currentIndex * cardWidth / cards.length}%)`);
+
+        // Atualizar classes ativas
+        cards.removeClass('active');
+        $(cards[currentIndex]).addClass('active');
+
+        indicators.removeClass('active');
+        $(`.indicator[data-index="${currentIndex}"]`).addClass('active');
+    }
+
+    // Event listeners
+    nextButton.on('click', function() {
+        showCard(currentIndex + 1);
+    });
+
+    prevButton.on('click', function() {
+        showCard(currentIndex - 1);
+    });
+
+    indicators.on('click', function() {
+        const index = $(this).data('index');
+        showCard(index);
+    });
+
+    // Detecção de visibilidade na tela usando Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                slider.addClass('in-view');
+                // Iniciar autoplay quando visível
+                startAutoplay();
+            } else {
+                slider.removeClass('in-view');
+                // Parar autoplay quando não visível
+                stopAutoplay();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(slider[0]);
+
+    // Autoplay
+    let autoplayTimer;
+
+    function startAutoplay() {
+        // Avança para o próximo slide a cada 5 segundos
+        autoplayTimer = setInterval(() => {
+            showCard(currentIndex + 1);
+        }, 5000);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayTimer);
+    }
+
+    // Parar autoplay quando o mouse estiver sobre o slider
+    slider.on('mouseenter', stopAutoplay);
+    slider.on('mouseleave', function() {
+        if (slider.hasClass('in-view')) {
+            startAutoplay();
+        }
+    });
+
+    // Suporte para gestos de toque (swipe)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.on('touchstart', function(e) {
+        touchStartX = e.originalEvent.touches[0].clientX;
+    });
+
+    slider.on('touchend', function(e) {
+        touchEndX = e.originalEvent.changedTouches[0].clientX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const minSwipeDistance = 50;
+        if (touchStartX - touchEndX > minSwipeDistance) {
+            // Swipe para a esquerda - próximo slide
+            showCard(currentIndex + 1);
+        } else if (touchEndX - touchStartX > minSwipeDistance) {
+            // Swipe para a direita - slide anterior
+            showCard(currentIndex - 1);
+        }
+    }
+});
+
+// Script para verificar quando a seção de depoimentos entra na viewport
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialsSection = document.querySelector('.testimonials');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+    };
+
+    const sectionObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Adicionar classe para iniciar animações quando a seção for visível
+                testimonialsSection.classList.add('section-visible');
+                // Podemos parar de observar após a primeira aparição
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    sectionObserver.observe(testimonialsSection);
+});
+
+
+$(document).ready(function() {
+    // Menu toggle
+    $('.menu-toggle').click(function() {
+        $('.main-menu').toggleClass('active');
+        $(this).toggleClass('active');
+    });
+
+    // FAQ toggle
+    $('.faq-question').click(function() {
+        $(this).next('.faq-answer').slideToggle();
+        $(this).find('.faq-toggle i').toggleClass('fa-plus fa-minus');
+    });
+
+    // Animation on scroll
+    $(window).scroll(function() {
+        $('.animate-on-scroll').each(function() {
+            var elementPos = $(this).offset().top;
+            var topOfWindow = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            var delay = $(this).data('delay') || 0;
+
+            if (elementPos < topOfWindow + windowHeight - 100) {
+                setTimeout(function() {
+                    $(this).addClass('animate__animated animate__fadeInUp');
+                }.bind(this), delay);
+            }
+        });
+    });
+
+    // Trigger scroll once to check for elements already in view
+    $(window).trigger('scroll');
+});
+
+
+$(document).ready(function() {
+    // Variáveis
+    const form = $("#investidor-form");
+    const step1 = $("#step1");
+    const step2 = $("#step2");
+    const step1Indicator = $("#step1-indicator");
+    const step2Indicator = $("#step2-indicator");
+    const progressBar = $("#form-progress");
+    const nextButton = $("#nextStep");
+    const prevButton = $("#prevStep");
+    const successMessage = $("#success-message");
+
+    // Menu mobile toggle
+    $(".menu-toggle").click(function() {
+        $(".main-menu").toggleClass("active");
+    });
+
+    // Configurar barra de progresso
+    progressBar.css("width", "50%");
+
+    // Botão próximo passo
+    nextButton.click(function() {
+        if (validateStep1()) {
+            step1.removeClass("active");
+            step2.addClass("active");
+            step1Indicator.removeClass("active");
+            step2Indicator.addClass("active");
+            progressBar.css("width", "100%");
+        }
+    });
+
+    // Botão voltar
+    prevButton.click(function() {
+        step2.removeClass("active");
+        step1.addClass("active");
+        step2Indicator.removeClass("active");
+        step1Indicator.addClass("active");
+        progressBar.css("width", "50%");
+    });
+
+    // Toggle de senha
+    $("#toggle-senha, #toggle-confirmar-senha").click(function() {
+        const input = $(this).siblings("input");
+        const icon = $(this).find("i");
+
+        // Toggle tipo do input
+        if (input.attr("type") === "password") {
+            input.attr("type", "text");
+            icon.removeClass("fa-eye").addClass("fa-eye-slash");
+        } else {
+            input.attr("type", "password");
+            icon.removeClass("fa-eye-slash").addClass("fa-eye");
+        }
+    });
+
+    // Validação do passo 1
+    function validateStep1() {
+        let isValid = true;
+
+        // Validação do nome
+        const nome = $("#nome").val().trim();
+        if (nome === "") {
+            showError("nome", "Por favor, insira seu nome completo");
+            isValid = false;
+        } else {
+            hideError("nome");
+        }
+
+        // Validação do email
+        const email = $("#email").val().trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === "" || !emailRegex.test(email)) {
+            showError("email", "Por favor, insira um email válido");
+            isValid = false;
+        } else {
+            hideError("email");
+        }
+
+        // Validação do telefone
+        const telefone = $("#telefone").val().trim();
+        const telefoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+        if (telefone === "" || !telefoneRegex.test(telefone)) {
+            showError("telefone", "Por favor, insira um telefone válido: (00) 00000-0000");
+            isValid = false;
+        } else {
+            hideError("telefone");
+        }
+
+        // Validação da senha
+        const senha = $("#senha").val();
+        if (senha === "" || senha.length < 8) {
+            showError("senha", "A senha deve ter pelo menos 8 caracteres");
+            isValid = false;
+        } else {
+            hideError("senha");
+        }
+
+        // Validação da confirmação de senha
+        const confirmarSenha = $("#confirmar-senha").val();
+        if (confirmarSenha === "" || confirmarSenha !== senha) {
+            showError("confirmar-senha", "As senhas não coincidem");
+            isValid = false;
+        } else {
+            hideError("confirmar-senha");
+        }
+
+        return isValid;
+    }
+
+    // Validação do passo 2
+    function validateStep2() {
+        let isValid = true;
+
+        // Validação do tipo de investidor
+        if ($("#tipo-investidor").val() === "") {
+            showError("tipo-investidor", "Por favor, selecione um tipo de investidor");
+            isValid = false;
+        } else {
+            hideError("tipo-investidor");
+        }
+
+        // Validação do montante
+        if ($("#montante").val() === "") {
+            showError("montante", "Por favor, selecione um montante");
+            isValid = false;
+        } else {
+            hideError("montante");
+        }
+
+        // Validação dos setores
+        if (!$("input[name='setores']:checked").length) {
+            showError("setores", "Por favor, selecione pelo menos um setor de interesse");
+            isValid = false;
+        } else {
+            hideError("setores");
+        }
+
+        // Validação dos estágios
+        if (!$("input[name='estagios']:checked").length) {
+            showError("estagios", "Por favor, selecione pelo menos um estágio de preferência");
+            isValid = false;
+        } else {
+            hideError("estagios");
+        }
+
+        // Validação da experiência
+        if ($("#experiencia").val() === "") {
+            showError("experiencia", "Por favor, selecione sua experiência");
+            isValid = false;
+        } else {
+            hideError("experiencia");
+        }
+
+        return isValid;
+    }
+
+    // Exibir erro
+    function showError(field, message) {
+        $(`#${field}-error`).text(message).css("display", "block");
+        $(`#${field}`).addClass("error");
+    }
+
+    // Esconder erro
+    function hideError(field) {
+        $(`#${field}-error`).text("").css("display", "none");
+        $(`#${field}`).removeClass("error");
+    }
+
+    // Máscara para telefone
+    $("#telefone").on("input", function() {
+        let value = $(this).val().replace(/\D/g, "");
+        if (value.length <= 11) {
+            value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+            value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+            $(this).val(value);
+        }
+    });
+
+    // Envio do formulário
+    form.submit(function(e) {
+        e.preventDefault();
+
+        if (validateStep2()) {
+            // Simulação de envio
+            form.fadeOut(300, function() {
+                successMessage.fadeIn(300);
+
+                // Simulação de redirecionamento após 3 segundos
+                setTimeout(function() {
+                    window.location.href = "painel-investidor.html";
+                }, 3000);
+            });
+        }
+    });
+});
+
+$(document).ready(function() {
+    // Menu toggle para dispositivos móveis
+    $('.menu-toggle').click(function() {
+        $('.main-menu').toggleClass('active');
+    });
+
+    // Fechar menu ao clicar em um item
+    $('.main-menu a').click(function() {
+        $('.main-menu').removeClass('active');
+    });
+
+    // Toggle para perguntas frequentes
+    $('.faq-question').click(function() {
+        $(this).parent().toggleClass('active');
+        $(this).parent().siblings().removeClass('active');
+    });
+
+    // Validação do formulário
+    $('.contact-form').submit(function(e) {
+        e.preventDefault();
+
+        let isValid = true;
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const message = $('#message').val();
+
+        if (name.trim() === '') {
+            isValid = false;
+            $('#name').css('border-color', '#ff6b6b');
+        } else {
+            $('#name').css('border-color', '#ddd');
+        }
+
+        if (email.trim() === '' || !isValidEmail(email)) {
+            isValid = false;
+            $('#email').css('border-color', '#ff6b6b');
+        } else {
+            $('#email').css('border-color', '#ddd');
+        }
+
+        if (message.trim() === '') {
+            isValid = false;
+            $('#message').css('border-color', '#ff6b6b');
+        } else {
+            $('#message').css('border-color', '#ddd');
+        }
+
+        if (isValid) {
+            // Simulação de envio do formulário
+            $('.form-submit button').text('Enviando...');
+
+            setTimeout(function() {
+                $('.contact-form').html('<div class="success-message"><i class="fas fa-check-circle"></i><h3>Mensagem enviada com sucesso!</h3><p>Agradecemos seu contato. Retornaremos em breve.</p></div>');
+                $('.success-message').addClass('animate__fadeIn');
+            }, 1500);
+        }
+    });
+
+    // Função para validar e-mail
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
+    // Animação de elementos ao scroll
+    $(window).scroll(function() {
+        $('.contact-card, .stat-card, .faq-item').each(function() {
+            const elementTop = $(this).offset().top;
+            const viewportBottom = $(window).scrollTop() + $(window).height();
+
+            if (elementTop < viewportBottom - 100) {
+                $(this).addClass('animate__fadeIn');
+            }
+        });
+    });
+
+    // Iniciar animações para elementos visíveis
+    $(window).trigger('scroll');
+});
+
+// Script para manipular os formulários (para ambos: investidor e anunciante)
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuração de elementos da interface
+    setupFormUI();
+    
+    // Manipulador para o formulário de investidor
+    const investidorForm = document.getElementById('investidor-form');
+    if (investidorForm) {
+      investidorForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Coleta todos os dados do formulário
+        const formData = collectFormData('investidor');
+        
+        // Salva no localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('userType', 'investidor');
+        
+        // Mostra mensagem de sucesso e redireciona
+        showSuccessAndRedirect();
+      });
+    }
+    
+    // Manipulador para o formulário de anunciante
+    const anuncianteForm = document.getElementById('anunciante-form');
+    if (anuncianteForm) {
+      anuncianteForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Coleta todos os dados do formulário
+        const formData = collectFormData('anunciante');
+        
+        // Salva no localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('userType', 'anunciante');
+        
+        // Mostra mensagem de sucesso e redireciona
+        showSuccessAndRedirect();
+      });
+    }
+    
+    // Configuração de navegação entre etapas do formulário
+    const nextStepBtn = document.getElementById('nextStep');
+    const prevStepBtn = document.getElementById('prevStep');
+    
+    if (nextStepBtn) {
+      nextStepBtn.addEventListener('click', function() {
+        if (validateFirstStep()) {
+          goToStep(2);
+        }
+      });
+    }
+    
+    if (prevStepBtn) {
+      prevStepBtn.addEventListener('click', function() {
+        goToStep(1);
+      });
+    }
+    
+    // Toggle de visibilidade da senha
+    setupPasswordToggles();
+  });
+  
+  // Configuração da UI do formulário
+  function setupFormUI() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+      });
+    }
+  }
+  
+  // Função para alternar entre as etapas do formulário
+  function goToStep(step) {
+    const steps = document.querySelectorAll('.step-content');
+    const indicators = document.querySelectorAll('.process-step');
+    const progress = document.getElementById('form-progress');
+    
+    steps.forEach(element => {
+      element.classList.remove('active');
+    });
+    
+    indicators.forEach(element => {
+      element.classList.remove('active');
+    });
+    
+    document.getElementById(`step${step}`).classList.add('active');
+    document.getElementById(`step${step}-indicator`).classList.add('active');
+    
+    // Atualiza a barra de progresso
+    if (progress) {
+      progress.style.width = step === 1 ? '50%' : '100%';
+    }
+  }
+  
+  // Validação da primeira etapa
+  function validateFirstStep() {
+    let isValid = true;
+    
+    // Validação do nome
+    const nome = document.getElementById('nome');
+    if (nome && nome.value.trim() === '') {
+      showError(nome, 'nome-error', 'Por favor, insira seu nome completo');
+      isValid = false;
+    } else if (nome) {
+      hideError(nome, 'nome-error');
+    }
+    
+    // Validação do email
+    const email = document.getElementById('email');
+    if (email && email.value.trim() === '') {
+      showError(email, 'email-error', 'Por favor, insira seu email');
+      isValid = false;
+    } else if (email && !isValidEmail(email.value)) {
+      showError(email, 'email-error', 'Por favor, insira um email válido');
+      isValid = false;
+    } else if (email) {
+      hideError(email, 'email-error');
+    }
+    
+    // Validação do telefone
+    const telefone = document.getElementById('telefone');
+    if (telefone && telefone.value.trim() === '') {
+      showError(telefone, 'telefone-error', 'Por favor, insira seu telefone');
+      isValid = false;
+    } else if (telefone) {
+      hideError(telefone, 'telefone-error');
+    }
+    
+    // Validação da senha
+    const senha = document.getElementById('senha');
+    if (senha && senha.value.trim() === '') {
+      showError(senha, 'senha-error', 'Por favor, crie uma senha');
+      isValid = false;
+    } else if (senha && senha.value.length < 6) {
+      showError(senha, 'senha-error', 'A senha deve ter pelo menos 6 caracteres');
+      isValid = false;
+    } else if (senha) {
+      hideError(senha, 'senha-error');
+    }
+    
+    // Validação da confirmação de senha
+    const confirmarSenha = document.getElementById('confirmar-senha');
+    const senhaEl = document.getElementById('senha');
+    if (confirmarSenha && confirmarSenha.value.trim() === '') {
+      showError(confirmarSenha, 'confirmar-senha-error', 'Por favor, confirme sua senha');
+      isValid = false;
+    } else if (confirmarSenha && senhaEl && confirmarSenha.value !== senhaEl.value) {
+      showError(confirmarSenha, 'confirmar-senha-error', 'As senhas não coincidem');
+      isValid = false;
+    } else if (confirmarSenha) {
+      hideError(confirmarSenha, 'confirmar-senha-error');
+    }
+    
+    return isValid;
+  }
+  
+  // Função para configurar os toggles de senha
+  function setupPasswordToggles() {
+    const toggleSenha = document.getElementById('toggle-senha');
+    const toggleConfirmarSenha = document.getElementById('toggle-confirmar-senha');
+    
+    if (toggleSenha) {
+      toggleSenha.addEventListener('click', function() {
+        togglePasswordVisibility('senha', this);
+      });
+    }
+    
+    if (toggleConfirmarSenha) {
+      toggleConfirmarSenha.addEventListener('click', function() {
+        togglePasswordVisibility('confirmar-senha', this);
+      });
+    }
+  }
+  
+  // Função para alternar a visibilidade da senha
+  function togglePasswordVisibility(inputId, toggleElement) {
+    const input = document.getElementById(inputId);
+    const icon = toggleElement.querySelector('i');
+    
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.className = 'fas fa-eye-slash';
+    } else {
+      input.type = 'password';
+      icon.className = 'fas fa-eye';
+    }
+  }
+  
+  // Função para mostrar mensagens de erro
+  function showError(input, errorId, message) {
+    const errorElement = document.getElementById(errorId);
+    if (errorElement) {
+      errorElement.textContent = message;
+      input.classList.add('error');
+    }
+  }
+  
+  // Função para ocultar mensagens de erro
+  function hideError(input, errorId) {
+    const errorElement = document.getElementById(errorId);
+    if (errorElement) {
+      errorElement.textContent = '';
+      input.classList.remove('error');
+    }
+  }
+  
+  // Validação de email
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  // Coletar todos os dados do formulário
+  function collectFormData(formType) {
+    const formData = {};
+    
+    // Dados comuns para ambos formulários
+    formData.nome = document.getElementById('nome').value;
+    formData.email = document.getElementById('email').value;
+    formData.telefone = document.getElementById('telefone').value;
+    formData.senha = document.getElementById('senha').value;
+    
+    if (formType === 'investidor') {
+      // Dados específicos do investidor
+      formData.tipoInvestidor = getSelectValue('tipo-investidor');
+      formData.montante = getSelectValue('montante');
+      formData.setores = getCheckboxValues('setores');
+      formData.estagios = getCheckboxValues('estagios');
+      formData.experiencia = getSelectValue('experiencia');
+    } else if (formType === 'anunciante') {
+      // Dados específicos do anunciante
+      formData.empresa = document.getElementById('empresa').value;
+      formData.segmento = getSelectValue('segmento');
+      formData.descricao = document.getElementById('descricao').value;
+      formData.areas = getCheckboxValues('areas');
+      formData.investimento = document.getElementById('investimento').value;
+    }
+    
+    return formData;
+  }
+  
+  // Obter valor de um select
+  function getSelectValue(id) {
+    const select = document.getElementById(id);
+    if (select && select.value) {
+      const selectedOption = select.options[select.selectedIndex];
+      return {
+        value: select.value,
+        text: selectedOption.text
+      };
+    }
+    return { value: '', text: '' };
+  }
+  
+  // Obter valores dos checkboxes selecionados
+  function getCheckboxValues(name) {
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+    const values = [];
+    
+    checkboxes.forEach((checkbox) => {
+      const label = document.querySelector(`label[for="${checkbox.id}"]`);
+      values.push({
+        value: checkbox.value,
+        text: label ? label.textContent : checkbox.value
+      });
+    });
+    
+    return values;
+  }
+  
+  // Mostrar mensagem de sucesso e redirecionar
+  function showSuccessAndRedirect() {
+    const successMessage = document.getElementById('success-message');
+    const formContainer = document.querySelector('.form-container form');
+    
+    if (successMessage && formContainer) {
+      formContainer.style.display = 'none';
+      successMessage.style.display = 'block';
+      
+      // Redirecionar após 2 segundos
+      setTimeout(function() {
+        window.location.href = 'resumo-cadastro.html';
+      }, 2000);
+    }
+  }
+</script>
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
